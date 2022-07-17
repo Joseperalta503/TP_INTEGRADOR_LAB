@@ -11,30 +11,26 @@ public class ConfigHibernate {
 	private SessionFactory sessionFactory;
 	private Session session;
 
-	public ConfigHibernate()
-	{
+	public ConfigHibernate() {
 		Configuration configuration = new Configuration();
-        configuration.configure();
-        ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+		configuration.configure();
+		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties())
+				.buildServiceRegistry();
+		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 	}
-	
-	public Session abrirConexion()
-	{
-		session=sessionFactory.openSession();
+
+	public Session abrirConexion() {
+		session = sessionFactory.openSession();
 		return session;
 	}
-	
-	public void cerrarSession()
-	{
+
+	public void cerrarSession() {
 		session.close();
 		cerrarSessionFactory();
 	}
-	
-	
-	public void cerrarSessionFactory()
-	{
+
+	public void cerrarSessionFactory() {
 		sessionFactory.close();
 	}
-	
+
 }

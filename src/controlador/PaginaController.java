@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import entidad.Genero;
 import entidad.Usuario;
 import utils.ConfigHibernate;
 
@@ -37,8 +36,8 @@ public class PaginaController {
 		session.beginTransaction();
 
 		Usuario usuario = new Usuario();
-		//usuario.setApellido(txtApellido);
-		//usuario.setNombre(txtNombre);
+		// usuario.setApellido(txtApellido);
+		// usuario.setNombre(txtNombre);
 
 		session.save(usuario);
 
@@ -50,7 +49,7 @@ public class PaginaController {
 
 		return MV;
 	}
-	
+
 	@RequestMapping("panel.html")
 	public ModelAndView logeo(String txtUsuario, String txtContrasenia) {
 		ModelAndView MV = new ModelAndView();
@@ -60,43 +59,44 @@ public class PaginaController {
 		MVException.setViewName("index");
 
 		ConfigHibernate ch = new ConfigHibernate();
-		Session session= ch.abrirConexion();
+		Session session = ch.abrirConexion();
 
 		try {
-			Usuario usuario = (Usuario)session.createQuery("FROM Usuario u where u.usuarioLogeo =:usuarioParametro")
-					.setParameter("usuarioParametro", txtUsuario)
-					.uniqueResult();
+			Usuario usuario = (Usuario) session.createQuery("FROM Usuario u where u.usuarioLogeo =:usuarioParametro")
+					.setParameter("usuarioParametro", txtUsuario).uniqueResult();
 			System.out.printf(usuario.toString());
-			if(usuario != null && usuario.getContrasenia().equals(txtContrasenia)) {
+			if (usuario != null && usuario.getContrasenia().equals(txtContrasenia)) {
 				ch.cerrarSession();
 				return MV;
 			}
 			ch.cerrarSession();
 			return MVException;
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.out.printf("EXCEPCIÓN");
 			ch.cerrarSession();
 			e.printStackTrace();
 			return MVException;
 		}
 	}
-	
-	
 
 	@RequestMapping("index.html")
 	public ModelAndView index() {
 		ModelAndView MV = new ModelAndView();
 		MV.setViewName("index");
-		
+
 		ConfigHibernate ch = new ConfigHibernate();
-		Session session= ch.abrirConexion();
+		Session session = ch.abrirConexion();
 		session.beginTransaction();
-		Usuario usuario = new Usuario("asd", "asd");
-		session.save(usuario);
-		session.getTransaction().commit();
+
+		Usuario usuario = (Usuario) session.get(Usuario.class, 1);
+		if (usuario == null) {
+			usuario = new Usuario("asd", "asd");
+			session.save(usuario);
+			session.getTransaction().commit();
+		}
 		ch.cerrarSession();
 		ch.cerrarSessionFactory();
-		
+
 		return MV;
 	}
 
