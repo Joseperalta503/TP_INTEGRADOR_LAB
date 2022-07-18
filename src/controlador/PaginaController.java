@@ -14,6 +14,34 @@ import utils.ConfigHibernate;
 
 @Controller
 public class PaginaController {
+	@RequestMapping("login.html")
+	public ModelAndView login(String txtUsuario, String txtContrasenia) {
+		ModelAndView MV = new ModelAndView();
+		MV.addObject("usuarioActual", txtUsuario);
+		MV.setViewName("login");
+		ModelAndView MVException = new ModelAndView();
+		MVException.setViewName("login");
+
+		ConfigHibernate ch = new ConfigHibernate();
+		Session session = ch.abrirConexion();
+
+		try {
+			Usuario usuario = (Usuario) session.createQuery("FROM Usuario u where u.usuarioLogeo =:usuarioParametro")
+					.setParameter("usuarioParametro", txtUsuario).uniqueResult();
+			System.out.printf(usuario.toString());
+			if (usuario != null && usuario.getContrasenia().equals(txtContrasenia)) {
+				ch.cerrarSession();
+				return MV;
+			}
+			ch.cerrarSession();
+			return MVException;
+		} catch (Exception e) {
+			System.out.printf("EXCEPCIÓN");
+			ch.cerrarSession();
+			e.printStackTrace();
+			return MVException;
+		}
+	}
 
 	@RequestMapping("agregarUsuario.html")
 	public ModelAndView agregarUsuario(String txtNombre, String txtApellido) {
@@ -50,11 +78,11 @@ public class PaginaController {
 		return MV;
 	}
 
-	@RequestMapping("panel.html")
+	@RequestMapping("index.html")
 	public ModelAndView logeo(String txtUsuario, String txtContrasenia) {
 		ModelAndView MV = new ModelAndView();
 		MV.addObject("usuarioActual", txtUsuario);
-		MV.setViewName("panel");
+		MV.setViewName("index");
 		ModelAndView MVException = new ModelAndView();
 		MVException.setViewName("index");
 
@@ -77,27 +105,6 @@ public class PaginaController {
 			e.printStackTrace();
 			return MVException;
 		}
-	}
-
-	@RequestMapping("index.html")
-	public ModelAndView index() {
-		ModelAndView MV = new ModelAndView();
-		MV.setViewName("index");
-
-		ConfigHibernate ch = new ConfigHibernate();
-		Session session = ch.abrirConexion();
-		session.beginTransaction();
-
-		Usuario usuario = (Usuario) session.get(Usuario.class, 1);
-		if (usuario == null) {
-			usuario = new Usuario("asd", "asd");
-			session.save(usuario);
-			session.getTransaction().commit();
-		}
-		ch.cerrarSession();
-		ch.cerrarSessionFactory();
-
-		return MV;
 	}
 
 }

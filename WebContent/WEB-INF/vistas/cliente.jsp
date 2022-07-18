@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Cliente here</title>
+<title>Clientes</title>
 </head>
 
 <body>
 
 	<header>
 	<ul class="lista">
-		<li class="lista__contenido">Volver</li>
+		<li class="lista__contenido"><a href="index.html">Volver</a></li>
 		<li class="lista__contenido">Administración de clientes</li>
 		<li class="lista__contenido">Bienvenido ${usuarioActual}</li>
 		<li class="lista__contenido">Salir</li>
@@ -22,7 +22,6 @@
 	<main>
 
 	<div class="bodys">
-		<form action="#">
 			<table>
 				<thead>
 					<tr>
@@ -56,7 +55,6 @@
 				</tr>
 
 			</table>
-		</form>
 
 	</div>
 

@@ -4,13 +4,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Biblioteca</title>
+<title>Nacionalidades</title>
 </head>
 <body>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+${nacionalidades}
+${nacionalidades[0]}
+
+<c:forEach var="item" items="${nacionalidades}">
+${item}
+</c:forEach>
+
 	<header>
 		<ul class="lista">
 			<li class="lista__contenido"><a href="index.html">Volver</a></li>
-			<li class="lista__contenido">Administración de las bibliotecas</li>
+			<li class="lista__contenido">Administración de las Nacionalidades</li>
 			<li class="lista__contenido">Bienvenido ${usuarioActual}</li>
 		</ul>
 	</header>
@@ -22,9 +31,7 @@
 			<thead>
   			<tr>
     			<th>ID</th>
-    			<th>Libro</th>
-    			<th>Fecha de Alta</th>
-    			<th>Estado</th>
+    			<th>Descripcion</th>
     			<th>Eliminar</th>
     			<th>Actualizar</th>
   			</tr>
@@ -32,14 +39,10 @@
   			<tr>
     			<td>example</td>
     			<td>example</td>
-    			<td>example</td>
-    			<td>example</td>
     			<td>Eliminar</td>
     			<td>Actualizar</td>
   			</tr>
 			<tr>
-				<td>example</td>
-				<td>example</td>
 				<td>example</td>
 				<td>example</td>
 				<td>Eliminar</td>
@@ -129,5 +132,3 @@ td {
 
 
 </html>
-
-
