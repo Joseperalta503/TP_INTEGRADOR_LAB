@@ -1,6 +1,5 @@
 package controlador;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -26,18 +25,17 @@ public class NacionalidadController {
 		// System.out.println((Object)
 		// session.createCriteria(Nacionalidad.class).list());
 
-		// List<Nacionalidad> nacionalidades =
-		// session.createCriteria(Nacionalidad.class).list();
+		List<Nacionalidad> nacionalidades = session.createCriteria(Nacionalidad.class).list();
 
-		List<Nacionalidad> nacionalidades = new LinkedList<>();
+		// List<Nacionalidad> nacionalidades = new LinkedList<>();
 
-		Nacionalidad n1 = new Nacionalidad();
-		n1.setDescripcion("aaa");
-		nacionalidades.add(n1);
-
-		Nacionalidad n2 = new Nacionalidad();
-		n2.setDescripcion("bbb");
-		nacionalidades.add(n2);
+		// Nacionalidad n1 = new Nacionalidad();
+		// n1.setDescripcion("aaa");
+		// nacionalidades.add(n1);
+		//
+		// Nacionalidad n2 = new Nacionalidad();
+		// n2.setDescripcion("bbb");
+		// nacionalidades.add(n2);
 
 		MV.addObject("nacionalidades", nacionalidades);
 
