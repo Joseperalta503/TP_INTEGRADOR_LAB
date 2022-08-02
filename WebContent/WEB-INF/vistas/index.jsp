@@ -8,7 +8,6 @@
 </head>
 
 <body>
-	
 	<h1 class="navegacion">Bienvenido ${usuarioActual}</h1>
 
 	<header> 

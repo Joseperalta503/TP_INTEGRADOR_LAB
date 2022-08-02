@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,12 +17,14 @@ public class Nacionalidad implements Serializable {
 	
 	@Id
 	@Column(name="ID_Nacionalidad")
+	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Integer ID;
 	@Column(name="Descripcion")
 	private String Descripcion;
+	public Nacionalidad() {}
 	
-	public Nacionalidad() {
-		
+	public Nacionalidad(String Descripcion) {
+		this.Descripcion = Descripcion;
 	}
 
 	public Integer getID() {

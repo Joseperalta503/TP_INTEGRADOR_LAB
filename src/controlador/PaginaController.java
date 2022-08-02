@@ -1,5 +1,7 @@
 package controlador;
 
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -9,13 +11,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import DAOIMPL.DaoImplCliente;
+import DAOIMPL.DaoImplNacionalidad;
+import entidad.Cliente;
+import entidad.Nacionalidad;
 import entidad.Usuario;
 import utils.ConfigHibernate;
 
 @Controller
 public class PaginaController {
+	private boolean dataCargada = false;
+	
 	@RequestMapping("login.html")
 	public ModelAndView login(String txtUsuario, String txtContrasenia) {
+		
+		if(!dataCargada) {
+			this.cargarData();
+			dataCargada = true;
+		}
+		System.out.println("Estoy dentro de login");
+		
 		ModelAndView MV = new ModelAndView();
 		MV.addObject("usuarioActual", txtUsuario);
 		MV.setViewName("login");
@@ -23,7 +38,7 @@ public class PaginaController {
 		MVException.setViewName("login");
 
 		ConfigHibernate ch = new ConfigHibernate();
-		Session session = ch.abrirConexion();
+		Session session = ch.abrirConexion1();
 
 		try {
 			Usuario usuario = (Usuario) session.createQuery("FROM Usuario u where u.usuarioLogeo =:usuarioParametro")
@@ -83,28 +98,17 @@ public class PaginaController {
 		ModelAndView MV = new ModelAndView();
 		MV.addObject("usuarioActual", txtUsuario);
 		MV.setViewName("index");
-		ModelAndView MVException = new ModelAndView();
-		MVException.setViewName("index");
-
-		ConfigHibernate ch = new ConfigHibernate();
-		Session session = ch.abrirConexion();
-
-		try {
-			Usuario usuario = (Usuario) session.createQuery("FROM Usuario u where u.usuarioLogeo =:usuarioParametro")
-					.setParameter("usuarioParametro", txtUsuario).uniqueResult();
-			System.out.printf(usuario.toString());
-			if (usuario != null && usuario.getContrasenia().equals(txtContrasenia)) {
-				ch.cerrarSession();
-				return MV;
-			}
-			ch.cerrarSession();
-			return MVException;
-		} catch (Exception e) {
-			System.out.printf("EXCEPCIÓN");
-			ch.cerrarSession();
-			e.printStackTrace();
-			return MVException;
-		}
+		return MV;
+	}
+	
+	private void cargarData() {
+		System.out.println("Estoy dentro de cargar data");
+		DaoImplNacionalidad daoImplNacionalidad = new DaoImplNacionalidad();
+		DaoImplCliente daoImplCliente = new DaoImplCliente();
+		Nacionalidad nacionalidad = new Nacionalidad("Argentina");
+		daoImplNacionalidad.Agregar(nacionalidad);
+		Cliente cliente = new Cliente(222, "Ramiro", "Alegre", "ralegre@asd.com", "asdsa 1 2 3", "General Pacheco", 21312231, new Date(), nacionalidad);
+		daoImplCliente.Agregar(cliente);
 	}
 
 }

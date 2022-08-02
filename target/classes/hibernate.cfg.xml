@@ -15,13 +15,13 @@
         <property name="hbm2ddl.auto">update</property>
         
         <mapping class="entidad.Nacionalidad"/>
+        <mapping class="entidad.Cliente"/>
         <mapping class="entidad.Usuario"/>
         <mapping class="entidad.Autor"/>
         <mapping class="entidad.Genero"/>      
         <mapping class="entidad.Libro"/>  
         <mapping class="entidad.Biblioteca"/>
 		<mapping class="entidad.Prestamo"/>
-        <mapping class="entidad.Cliente"/>
         
 	</session-factory>
 </hibernate-configuration>

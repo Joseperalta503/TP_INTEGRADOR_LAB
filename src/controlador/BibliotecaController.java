@@ -16,11 +16,6 @@ public class BibliotecaController {
 		MV.addObject("usuarioActual", usuarioActual);
 		MV.setViewName("biblioteca");
 
-		ConfigHibernate ch = new ConfigHibernate();
-		Session session = ch.abrirConexion();
-
-		ch.cerrarSession();
-		ch.cerrarSessionFactory();
 		return MV;
 	}
 }

@@ -18,14 +18,13 @@ public class NacionalidadController {
 		ModelAndView MV = new ModelAndView();
 		MV.addObject("usuarioActual", usuarioActual);
 		MV.setViewName("nacionalidad");
-		ConfigHibernate ch = new ConfigHibernate();
-		Session session = ch.abrirConexion();
+		//ConfigHibernate ch = new ConfigHibernate();
 
 		// System.out.println(session.get(Nacionalidad.class,1));
 		// System.out.println((Object)
 		// session.createCriteria(Nacionalidad.class).list());
 
-		List<Nacionalidad> nacionalidades = session.createCriteria(Nacionalidad.class).list();
+		//List<Nacionalidad> nacionalidades = session.createCriteria(Nacionalidad.class).list();
 
 		// List<Nacionalidad> nacionalidades = new LinkedList<>();
 
@@ -37,10 +36,9 @@ public class NacionalidadController {
 		// n2.setDescripcion("bbb");
 		// nacionalidades.add(n2);
 
-		MV.addObject("nacionalidades", nacionalidades);
+		//MV.addObject("nacionalidades", nacionalidades);
 
-		ch.cerrarSession();
-		ch.cerrarSessionFactory();
+
 		return MV;
 	}
 }

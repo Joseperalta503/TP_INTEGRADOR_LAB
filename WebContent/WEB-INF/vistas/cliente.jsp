@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Clientes</title>
 </head>
+
 
 <body>
 
@@ -21,9 +23,9 @@
 
 	<main>
 
-	<div class="bodys">
-			<table>
-				<thead>
+	<div class="bodys table" id="customers">
+		<table id="example" class="display" style="width:100%">
+        	<thead>
 					<tr>
 						<th>ID</th>
 						<th>NOMBRES</th>
@@ -38,33 +40,40 @@
 						<th>Modificar</th>
 						<th>Actualizar</th>
 					</tr>
-				</thead>
-				<tr>
-					<td>1</td>
-					<td>Josefina</td>
-					<td>Peralta</td>
-					<td>Argentina</td>
-					<td>Josefina@gmail.com</td>
-					<td>18 de narnia</td>
-					<td>Garin</td>
-					<td><input type="text" value=""></td>
-					<td>29/04/2001</td>
+        	</thead>
+        <tbody>
+        	<c:forEach items="${data}" var="item">
+  				<tr>
+					<td><input type="number" readonly="readonly" value="${item.getID()}" ></td>
+					<td><input type="text" value="${item.getNombre()}"></td>
+					<td><input type="text" value="${item.getApellido()}"></td>
+					<td><input type="text" value="${item.getNacionalidad().getDescripcion()}"></td>
+					<td><input type="text" value="${item.getEmail()}"></td>
+					<td><input type="text" value="${item.getDireccion()}"></td>
+					<td><input type="text" value="${item.getLocalidad()}"></td>
+					<td><input type="number" value="${item.getTelefono()}"></td>
+					<td><input type="text" value="${item.getFechaNacimiento().toString()}"></td>
 					<td><input type="button" value="Eliminar"></td>
 					<td><input type="button" value="Modificar"></td>
 					<td><input type="button" value="Actualizar"></td>
-				</tr>
+  				</tr>
+			</c:forEach>
+        </tbody>
+    </table>
 
-			</table>
+</div>
 
-	</div>
-
-	</main>
-
+</main>
 
 </body>
 
 
 <style>
+
+
+thead input {
+        width: 100%;
+   }
 header {
 	height: 40px;
 	align-content: center;

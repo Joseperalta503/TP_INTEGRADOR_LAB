@@ -6,6 +6,9 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -24,6 +27,11 @@ public class Prestamo implements Serializable {
 	private Date fecha_prestamo;
 	@Column(name = "CANTIDAD_DIAS")
 	private int cantidad_dias;
+	
+	@ManyToOne (cascade= {})
+	@JoinColumn (name="Cliente")
+	private Cliente cliente;
+	
 	public Integer getID() {
 		return ID;
 	}
