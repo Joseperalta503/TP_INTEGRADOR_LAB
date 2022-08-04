@@ -1,0 +1,10 @@
+body{
+	background-color: aliceblue;
+    background-image: url(img/BibliotecaJose.jpg) ;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.formBackground{
+    background-color: white;
+}

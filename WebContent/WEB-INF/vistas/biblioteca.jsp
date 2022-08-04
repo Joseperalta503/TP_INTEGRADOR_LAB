@@ -25,8 +25,8 @@
     			<th>Libro</th>
     			<th>Fecha de Alta</th>
     			<th>Estado</th>
-    			<th>Eliminar</th>
-    			<th>Actualizar</th>
+    			<th><button> Actualizar </button></th>
+    			<th><button> Eliminar </button></th>
   			</tr>
 			</thead>
   			<tr>

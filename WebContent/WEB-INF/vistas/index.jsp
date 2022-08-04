@@ -28,7 +28,13 @@
 					class="redireccion"> <input type="hidden"
 					value="${usuarioActual}" name="usuarioActual"></li>
 				</form>
-				<li class="opcion">Prestamos</li>
+				</form>
+					<form method="get" action="prestamos.html">
+					<li class="opcion"><input type="submit" value="Prestamos"
+					class="redireccion"> <input type="hidden"
+					value="${usuarioActual}" name="usuarioActual"></li>
+				</form>
+			
 			</ul>
 		</nav> 
 	</header>
