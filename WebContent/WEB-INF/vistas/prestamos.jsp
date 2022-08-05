@@ -53,40 +53,63 @@
     </header>
     <main class="d-flex flex-column justify-content-center align-items-center p-5 w-100">
         <p class="text-primary m-5 bg-white">${msg}</p>
-        <form action="pedirPrestamo.html" method="post" class="d-flex flex-row rounded shadow bg-white rounded w-50 mb-5 mt-5 p-3 flex-wrap justify-content-center">
+        
+        <form method="get" action="pedirPrestamo.html" class="d-flex flex-row rounded shadow bg-white rounded w-50 mb-5 mt-5 p-3 flex-wrap justify-content-center">
             <h1>Pedir prestamo</h1>
             <div class="w-100 d-flex flex-row">
                 <div class="m-3 w-50">
+                    
                     <label for="Biblioteca" class="form-label">Biblioteca</label>
                     <select class="form-select" aria-label="Default select example" id="Biblioteca" name="Biblioteca">
+             <!--  
                         <c:forEach items="${bibliotecas}" var="item">
                         <option value="${item.getID()}">${item.getID()}</option>
                     	</c:forEach>
+              -->      	
+                    	<option>Seleccione un ISBN de Libro</option>
+          				<option>las 100 aventuras</option>
+          				<option>hoy no dormis</option>
+          				<option>que esperavas pa</option>
+                    	
                     </select>
+                
                 </div>
                 <div class="m-3 w-50">
+                    
                     <label for="client" class="form-label">Cliente</label>
-                    <select class="form-select" aria-label="Default select example" id="client" name="client">
-                        <c:forEach items="${clientesList}" var="item">
+                    <select class="form-select" aria-label="Default select example" id="client" name="cliente">
+          <!--               <c:forEach items="${clientesList}" var="item">
                         	<option value="${item.getID()}">${item.getNombre()}</option>
                     	</c:forEach>
+          -->
+          
+          				<option>Seleccione un Cliente</option>
+          				<option>Adriel Lopez</option>
+          				<option>Pepe Gimenez</option>
+          				<option>Federico arreña</option>
                     </select>
+                
                 </div>
             </div>
             <div class="w-100 d-flex flex-row">
                 <div class="m-3 w-50">
+                
                     <label for="date" class="form-label">Fecha de prestamo</label>
-                    <input type="date" class="form-control" required name="date">
+                    <input type="date" class="form-control" required name="fechaPres">
+                
                 </div>
                 <div class="m-3 w-50">
+                    
                     <label for="cantdias" class="form-label" required>Cantidad de dias</label>
                     <input type="number" name="cantdias" id="cantdias" class="form-control" min="1">
+                
                 </div>
             </div>
             <div class="w-100 d-flex flex-row justify-content-center align-content-center pt-3">
-                <button type="submit" class="btn btn-primary" id="submit" name="submit">Confirmar prestamo</button>
+                <button type="submit" class="btn btn-primary" id="submit" name="btnEnviar">Confirmar prestamo</button>
             </div>
         </form>
+    <!--     
         <div style="background-color: white;" class="d-flex justify-content-center align-items-center">
             <table class="tableCss" id="table">
                 <thead class="">
@@ -133,7 +156,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
         integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
         crossorigin="anonymous"></script>
-    
+     -->
 </body>
 
 </html>
