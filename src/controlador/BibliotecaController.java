@@ -9,13 +9,24 @@ import utils.ConfigHibernate;
 
 @Controller
 public class BibliotecaController {
+	
+	ModelAndView MV = new ModelAndView();
 
 	@RequestMapping("Biblioteca.html")
 	public ModelAndView Biblioteca(String usuarioActual) {
-		ModelAndView MV = new ModelAndView();
+		
 		MV.addObject("usuarioActual", usuarioActual);
 		MV.setViewName("biblioteca");
 
 		return MV;
 	}
+	
+	/*@RequestMapping("AltaBiblioteca.html")
+	public ModelAndView AltaBiblioteca() {
+		
+		
+		
+		return MV;
+	}*/
+	
 }

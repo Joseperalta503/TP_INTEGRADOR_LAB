@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,22 +30,18 @@
     			<th><button> Eliminar </button></th>
   			</tr>
 			</thead>
-  			<tr>
-    			<td>example</td>
-    			<td>example</td>
-    			<td>example</td>
-    			<td>example</td>
-    			<td>Eliminar</td>
-    			<td>Actualizar</td>
+  			
+  			  <c:forEach var= "item" items="${bibliotecas}">
+  			     <tr>
+  			        <td>${item.getID()}</td>
+					<td>${item.getLibro()}</td>
+					<td>${item.getFechaDeAlta()}</td>
+					<td>${item.getEstado()}</td>
+					
+  			     </tr>
+  			   </c:forEach>
+  			  
   			</tr>
-			<tr>
-				<td>example</td>
-				<td>example</td>
-				<td>example</td>
-				<td>example</td>
-				<td>Eliminar</td>
-				<td>Actualizar</td>
-		  	</tr>
 		</table>
 	</div>
 	</main>
