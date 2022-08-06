@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import DAO.DaoImplCliente;
+import DAOIMPL.DaoImplCliente;
 import Service.ServiceCliente;
 import entidad.Cliente;
 

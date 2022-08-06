@@ -41,12 +41,12 @@ public class ClientesController {
 	}
 	
 	@RequestMapping("AgregarCliente.html")
-	public ModelAndView agregar_Cliente(String dni, String nombre, String apellido, 
+	public ModelAndView agregar_Cliente(String dni, String nombre, String Apellido, 
 			Nacionalidad nacionalidad, String email,String direccion, String localidad, String telefono, Date fechanacimiento) {
 		
 		ServiceClienteImpl Clientes = new ServiceClienteImpl();
 		Cliente cliente = new Cliente();
-		cliente.setApellido(apellido);
+		cliente.setApellido(Apellido);
 		cliente.setDireccion(direccion);
 		cliente.setDni(Integer.parseInt(dni));
 		cliente.setEmail(email);

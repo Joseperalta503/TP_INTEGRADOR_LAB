@@ -1,11 +1,10 @@
-package DAO;
+package DAOIMPL;
 
 import java.util.ArrayList;
 
 import org.hibernate.Session;
 
-import DAOIMPL.Conexion;
-import DAOIMPL.DaoCliente;
+import DAO.DaoCliente;
 import entidad.Cliente;
 import utils.ConfigHibernate;
 

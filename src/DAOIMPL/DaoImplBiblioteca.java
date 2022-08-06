@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import DAO.DaoBiblioteca;
 import entidad.Biblioteca;
+import entidad.Cliente;
+import utils.ConfigHibernate;
 
 public class DaoImplBiblioteca implements DaoBiblioteca {
 
 	@Autowired
 	private Conexion conexion;
-
+	
 	@Override
 	public boolean addBiblioteca(Biblioteca biblioteca) {
 		conexion.abrirConexion();
@@ -84,5 +86,14 @@ public class DaoImplBiblioteca implements DaoBiblioteca {
 		conexion.cerrarSession();
 		return flag;
 	}
+	
+	
+	public ArrayList<Biblioteca> getLibroXbilioteca() {
+		conexion.abrirConexion();
+		ArrayList<Biblioteca> lista = (ArrayList<Biblioteca>)conexion.getSession().createQuery("FROM Biblioteca").list();
+		conexion.cerrarSession();
+		return lista;
+	}
+	
 
 }
