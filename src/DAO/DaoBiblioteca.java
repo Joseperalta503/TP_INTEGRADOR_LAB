@@ -13,4 +13,9 @@ public interface DaoBiblioteca{
 	public boolean deleteBiblioteca(Biblioteca biblioteca);
 	public Biblioteca getBibliotecaById(int id);
 	public boolean modifyBiblioteca(Biblioteca biblioteca);
+	
+	
+ //esta implementacion trae libros por bilioteca
+	public ArrayList<Biblioteca> getLibroXbilioteca();
+	
 }

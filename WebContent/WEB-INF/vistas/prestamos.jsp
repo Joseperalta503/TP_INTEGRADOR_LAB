@@ -59,34 +59,25 @@
             <div class="w-100 d-flex flex-row">
                 <div class="m-3 w-50">
                     
-                    <label for="Biblioteca" class="form-label">Biblioteca</label>
+                    <label for="Biblioteca" class="form-label">Libro</label>
                     <select class="form-select" aria-label="Default select example" id="Biblioteca" name="Biblioteca">
-             <!--  
-                        <c:forEach items="${bibliotecas}" var="item">
+              
+                        <c:forEach items="${bibliotecaList}" var="item">
                         <option value="${item.getID()}">${item.getID()}</option>
                     	</c:forEach>
-              -->      	
-                    	<option>Seleccione un ISBN de Libro</option>
-          				<option>las 100 aventuras</option>
-          				<option>hoy no dormis</option>
-          				<option>que esperavas pa</option>
-                    	
+              
                     </select>
                 
                 </div>
                 <div class="m-3 w-50">
                     
                     <label for="client" class="form-label">Cliente</label>
+                    
                     <select class="form-select" aria-label="Default select example" id="client" name="cliente">
-          <!--               <c:forEach items="${clientesList}" var="item">
-                        	<option value="${item.getID()}">${item.getNombre()}</option>
+                        <c:forEach items="${clientesList}" var="item">
+                        	<option value="${item.getID()}">${item.getNombre()} ${item.getApellido()}</option>
                     	</c:forEach>
-          -->
           
-          				<option>Seleccione un Cliente</option>
-          				<option>Adriel Lopez</option>
-          				<option>Pepe Gimenez</option>
-          				<option>Federico arreña</option>
                     </select>
                 
                 </div>
