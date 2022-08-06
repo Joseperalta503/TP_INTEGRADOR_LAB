@@ -1,15 +1,18 @@
-package DAOIMPL;
+package DAO;
 
 import java.util.ArrayList;
 
 import org.hibernate.Session;
 
-import DAO.DaoCliente;
+import DAOIMPL.Conexion;
+import DAOIMPL.DaoCliente;
 import entidad.Cliente;
 import utils.ConfigHibernate;
 
 public class DaoImplCliente implements DaoCliente {
 
+	private Conexion conexion;
+	
 	ConfigHibernate ch;
 	public DaoImplCliente() {
 		ch = new ConfigHibernate();

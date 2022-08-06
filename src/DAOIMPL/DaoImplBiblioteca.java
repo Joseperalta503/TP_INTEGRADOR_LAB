@@ -11,7 +11,7 @@ public class DaoImplBiblioteca implements DaoBiblioteca {
 
 	@Autowired
 	private Conexion conexion;
-	
+
 	@Override
 	public boolean addBiblioteca(Biblioteca biblioteca) {
 		conexion.abrirConexion();
@@ -35,7 +35,7 @@ public class DaoImplBiblioteca implements DaoBiblioteca {
 		conexion.cerrarSession();
 		return lista;
 	}
-	
+
 	@Override
 	public Biblioteca getBibliotecaById(int id) {
 		conexion.abrirConexion();
@@ -43,7 +43,7 @@ public class DaoImplBiblioteca implements DaoBiblioteca {
 		conexion.cerrarSession();
 		return biblioteca;
 	}
-	
+
 
 	@Override
 	public boolean deleteBiblioteca(Biblioteca biblioteca) {
