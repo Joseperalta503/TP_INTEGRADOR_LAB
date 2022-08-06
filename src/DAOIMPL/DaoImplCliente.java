@@ -10,6 +10,8 @@ import utils.ConfigHibernate;
 
 public class DaoImplCliente implements DaoCliente {
 
+	private Conexion conexion;
+	
 	ConfigHibernate ch;
 	public DaoImplCliente() {
 		ch = new ConfigHibernate();

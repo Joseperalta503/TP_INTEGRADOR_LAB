@@ -16,8 +16,6 @@ import utils.ConfigHibernate;
 @Controller
 public class PrestamoController {
 	
-	
-
 	@RequestMapping("prestamos.html")
 	public ModelAndView Prestamo(String usuarioActual) {
 		DaoImplCliente daoCliente = new DaoImplCliente();
