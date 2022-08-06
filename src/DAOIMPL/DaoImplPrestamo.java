@@ -47,7 +47,7 @@ public class DaoImplPrestamo implements DaoPrestamo{
 
 	public ArrayList<Prestamo> GetAll() {
 		ch.abrirConexion();
-		ArrayList<Prestamo> lista = (ArrayList<Prestamo>)ch.getSession().createQuery("FROM prestamo").list();
+		ArrayList<Prestamo> lista = (ArrayList<Prestamo>)ch.getSession().createQuery("FROM Prestamo").list();
 		ch.cerrarSession();
 		return lista;
 	}
