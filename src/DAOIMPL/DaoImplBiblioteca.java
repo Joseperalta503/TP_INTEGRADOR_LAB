@@ -14,11 +14,6 @@ public class DaoImplBiblioteca implements DaoBiblioteca {
 	@Autowired
 	private Conexion conexion;
 	
-	ConfigHibernate ch;
-	public DaoImplBiblioteca() {
-		ch = new ConfigHibernate();
-	}
-	
 	@Override
 	public boolean addBiblioteca(Biblioteca biblioteca) {
 		conexion.abrirConexion();
@@ -42,7 +37,7 @@ public class DaoImplBiblioteca implements DaoBiblioteca {
 		conexion.cerrarSession();
 		return lista;
 	}
-	
+
 	@Override
 	public Biblioteca getBibliotecaById(int id) {
 		conexion.abrirConexion();
@@ -50,7 +45,7 @@ public class DaoImplBiblioteca implements DaoBiblioteca {
 		conexion.cerrarSession();
 		return biblioteca;
 	}
-	
+
 
 	@Override
 	public boolean deleteBiblioteca(Biblioteca biblioteca) {
@@ -94,9 +89,9 @@ public class DaoImplBiblioteca implements DaoBiblioteca {
 	
 	
 	public ArrayList<Biblioteca> getLibroXbilioteca() {
-		ch.abrirConexion();
-		ArrayList<Biblioteca> lista = (ArrayList<Biblioteca>)ch.getSession().createQuery("FROM Biblioteca").list();
-		ch.cerrarSession();
+		conexion.abrirConexion();
+		ArrayList<Biblioteca> lista = (ArrayList<Biblioteca>)conexion.getSession().createQuery("FROM Biblioteca").list();
+		conexion.cerrarSession();
 		return lista;
 	}
 	

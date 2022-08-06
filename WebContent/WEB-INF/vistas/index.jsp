@@ -13,11 +13,10 @@
 	<header> 
 		<nav class="navegacion">
 			<ul class="lista">
-				<form method="get" action="Cliente.html">
-					<li class="opcion"><input type="submit" value="Clientes"
-						class="redireccion"> <input type="hidden"
-						value="${usuarioActual}" name="usuarioActual"></li>
-				</form>
+				<ul>Clientes</ul>
+				<li><a href='AltaCliente.html'>Alta Cliente</a></li>
+				<li><a href='ListaCliente.html'>Lista Cliente</a></li>
+				</ul>
 				<form method="get" action="Biblioteca.html">
 					<li class="opcion"><input type="submit" value="Bibliotecas"
 					class="redireccion"> <input type="hidden"

@@ -43,7 +43,6 @@ public class PaginaController {
 		try {
 			Usuario usuario = (Usuario) session.createQuery("FROM Usuario u where u.usuarioLogeo =:usuarioParametro")
 					.setParameter("usuarioParametro", txtUsuario).uniqueResult();
-			System.out.printf(usuario.toString());
 			if (usuario != null && usuario.getContrasenia().equals(txtContrasenia)) {
 				ch.cerrarSession();
 				return MV;
@@ -102,7 +101,6 @@ public class PaginaController {
 	}
 	
 	private void cargarData() {
-		System.out.println("Estoy dentro de cargar data");
 		DaoImplNacionalidad daoImplNacionalidad = new DaoImplNacionalidad();
 		DaoImplCliente daoImplCliente = new DaoImplCliente();
 		Nacionalidad nacionalidad = new Nacionalidad("Argentina");
