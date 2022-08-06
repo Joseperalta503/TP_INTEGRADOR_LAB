@@ -2,25 +2,22 @@ package DAOIMPL;
 
 import java.util.ArrayList;
 
-import org.hibernate.Session;
-
-import DAO.DaoCliente;
-import entidad.Cliente;
+import entidad.Libro;
 import utils.ConfigHibernate;
 
-public class DaoImplCliente implements DaoCliente {
-
+public class DaoImplLibro {
+	
 	ConfigHibernate ch;
-	public DaoImplCliente() {
+	public DaoImplLibro() {
 		ch = new ConfigHibernate();
 	}
 
-	public boolean Agregar(Cliente cliente) {
+	public boolean Agregar(Libro libro) {
 		ch.abrirConexion();
 		ch.CrearTransaccion();
 		boolean agregado = false;
 		try {
-			ch.Guardar(cliente);
+			ch.Guardar(libro);
 			ch.ConfimarTransaccion();
 			agregado = true;
 		}catch(Exception e) {
@@ -31,12 +28,12 @@ public class DaoImplCliente implements DaoCliente {
 	}
 
 
-	public boolean Modificar(Cliente cliente) {
+	public boolean Modificar(Libro libro) {
 		ch.abrirConexion();
 		ch.CrearTransaccion();
 		boolean agregado = false;
 		try {
-			ch.Actualizar(cliente);
+			ch.Actualizar(libro);
 			ch.ConfimarTransaccion();
 			agregado = true;
 		}catch(Exception e) {
@@ -47,20 +44,20 @@ public class DaoImplCliente implements DaoCliente {
 	}
 
 
-	public ArrayList<Cliente> GetAll() {
+	public ArrayList<Libro> GetAll() {
 		ch.abrirConexion();
-		ArrayList<Cliente> lista = (ArrayList<Cliente>)ch.getSession().createQuery("FROM Cliente").list();
+		ArrayList<Libro> lista = (ArrayList<Libro>)ch.getSession().createQuery("FROM Libro").list();
 		ch.cerrarSession();
 		return lista;
 	}
 
 
-	public boolean Eliminar(Cliente cliente) {
+	public boolean Eliminar(Libro libro) {
 		ch.abrirConexion();
 		ch.CrearTransaccion();
 		boolean eliminado = false;
 		try {
-			ch.Eliminar(cliente);
+			ch.Eliminar(libro);
 			ch.ConfimarTransaccion();
 			eliminado = true;
 		}catch(Exception e) {
@@ -69,9 +66,4 @@ public class DaoImplCliente implements DaoCliente {
 		ch.cerrarSession();
 		return eliminado;
 	}
-	
-	
-	
-	
-	
 }

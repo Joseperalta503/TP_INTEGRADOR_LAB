@@ -59,34 +59,25 @@
             <div class="w-100 d-flex flex-row">
                 <div class="m-3 w-50">
                     
-                    <label for="Biblioteca" class="form-label">Biblioteca</label>
+                    <label for="Biblioteca" class="form-label">Libro</label>
                     <select class="form-select" aria-label="Default select example" id="Biblioteca" name="Biblioteca">
-             <!--  
-                        <c:forEach items="${bibliotecas}" var="item">
-                        <option value="${item.getID()}">${item.getID()}</option>
+              
+                        <c:forEach items="${bibliotecaList}" var="item">
+                        <option value="${item.getISBN()}">${item.getTitulo()}</option>
                     	</c:forEach>
-              -->      	
-                    	<option>Seleccione un ISBN de Libro</option>
-          				<option>las 100 aventuras</option>
-          				<option>hoy no dormis</option>
-          				<option>que esperavas pa</option>
-                    	
+              
                     </select>
                 
                 </div>
                 <div class="m-3 w-50">
                     
                     <label for="client" class="form-label">Cliente</label>
+                    
                     <select class="form-select" aria-label="Default select example" id="client" name="cliente">
-          <!--               <c:forEach items="${clientesList}" var="item">
-                        	<option value="${item.getID()}">${item.getNombre()}</option>
+                        <c:forEach items="${clientesList}" var="item">
+                        	<option value="${item.getID()}">${item.getNombre()} ${item.getApellido()}</option>
                     	</c:forEach>
-          -->
           
-          				<option>Seleccione un Cliente</option>
-          				<option>Adriel Lopez</option>
-          				<option>Pepe Gimenez</option>
-          				<option>Federico arreña</option>
                     </select>
                 
                 </div>
@@ -109,13 +100,15 @@
                 <button type="submit" class="btn btn-primary" id="submit" name="btnEnviar">Confirmar prestamo</button>
             </div>
         </form>
-    <!--     
+    
+    
+   <!--  
+        
         <div style="background-color: white;" class="d-flex justify-content-center align-items-center">
             <table class="tableCss" id="table">
                 <thead class="">
                     <tr>
-                        <th>ID de prestamo</th>
-                        <th>ID de Biblioteca</th>
+                        <th>ID</th>
                         <th>ISBN</th>
                         <th>Cliente</th>
                         <th>Fecha de prestamo</th>
@@ -124,12 +117,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${prestamos}" var="item">
+                
+                    <c:forEach items="${dateList}" var="item">
                         <tr>
                         <form action="cerrarPrestamo.html" method="post">
-                            <td class="p-3">${item.getID()}
-                            <input type="hidden" name="idPrestamo" value="${item.getID()}">
-                            </td>
+                        
+                            <input type="number" name="idPrestamo" value="${item.getID()}">
+                            
+                            </td><input type="number" name="ISBN" value="${item.getID_BIBLIOTECA()}">
+                            
+                            </td><input type="text" name="idPrestamo" value="${item.getCliente()}">
+                            
+                            </td><input type="date" name="idPrestamo" value="${item.getFECHA_PRESTAMO()}">
+                            
+                            </td><input type="number" name="idPrestamo" value="${item.getCANTIDAD_DIAS()}">
+                            
                             <td class="p-3"></td>
                             <td class="p-3"></td>
                             <td class="p-3"></td>
@@ -145,6 +147,7 @@
                     </c:forEach>
                 </tbody>
             </table>
+         -->    
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -156,7 +159,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
         integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
         crossorigin="anonymous"></script>
-     -->
+     
 </body>
 
 </html>

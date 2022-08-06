@@ -2,25 +2,23 @@ package DAOIMPL;
 
 import java.util.ArrayList;
 
-import org.hibernate.Session;
-
-import DAO.DaoCliente;
-import entidad.Cliente;
+import DAO.DaoPrestamo;
+import entidad.Prestamo;
 import utils.ConfigHibernate;
 
-public class DaoImplCliente implements DaoCliente {
+public class DaoImplPrestamo implements DaoPrestamo{
 
 	ConfigHibernate ch;
-	public DaoImplCliente() {
+	public DaoImplPrestamo() {
 		ch = new ConfigHibernate();
 	}
 
-	public boolean Agregar(Cliente cliente) {
+	public boolean Agregar(Prestamo pres) {
 		ch.abrirConexion();
 		ch.CrearTransaccion();
 		boolean agregado = false;
 		try {
-			ch.Guardar(cliente);
+			ch.Guardar(pres);
 			ch.ConfimarTransaccion();
 			agregado = true;
 		}catch(Exception e) {
@@ -31,12 +29,12 @@ public class DaoImplCliente implements DaoCliente {
 	}
 
 
-	public boolean Modificar(Cliente cliente) {
+	public boolean Modificar(Prestamo pres) {
 		ch.abrirConexion();
 		ch.CrearTransaccion();
 		boolean agregado = false;
 		try {
-			ch.Actualizar(cliente);
+			ch.Actualizar(pres);
 			ch.ConfimarTransaccion();
 			agregado = true;
 		}catch(Exception e) {
@@ -47,20 +45,20 @@ public class DaoImplCliente implements DaoCliente {
 	}
 
 
-	public ArrayList<Cliente> GetAll() {
+	public ArrayList<Prestamo> GetAll() {
 		ch.abrirConexion();
-		ArrayList<Cliente> lista = (ArrayList<Cliente>)ch.getSession().createQuery("FROM Cliente").list();
+		ArrayList<Prestamo> lista = (ArrayList<Prestamo>)ch.getSession().createQuery("FROM prestamo").list();
 		ch.cerrarSession();
 		return lista;
 	}
 
 
-	public boolean Eliminar(Cliente cliente) {
+	public boolean Eliminar(Prestamo pres) {
 		ch.abrirConexion();
 		ch.CrearTransaccion();
 		boolean eliminado = false;
 		try {
-			ch.Eliminar(cliente);
+			ch.Eliminar(pres);
 			ch.ConfimarTransaccion();
 			eliminado = true;
 		}catch(Exception e) {
@@ -69,9 +67,5 @@ public class DaoImplCliente implements DaoCliente {
 		ch.cerrarSession();
 		return eliminado;
 	}
-	
-	
-	
-	
 	
 }
