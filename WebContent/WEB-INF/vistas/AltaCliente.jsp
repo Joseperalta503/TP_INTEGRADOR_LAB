@@ -32,7 +32,7 @@
                 <input id="NOMBRE" type="text" name="nombre">
     
                 <label for="APELLIDO"> APELLIDO </label>
-                <input id="APELLIDO" type="text" name="Apellido">
+                <input id="APELLIDO" type="text" name="apellido">
 
                 <label for="NACIONALIDAD"> NACIONALIDAD </label>
                 <input id="NACIONALIDAD" type="text" name="nacionalidad">
