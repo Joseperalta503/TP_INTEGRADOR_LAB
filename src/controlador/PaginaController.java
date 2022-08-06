@@ -1,5 +1,6 @@
 package controlador;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.hibernate.Session;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import DAO.DaoNacionalidad;
 import DAOIMPL.DaoImplCliente;
 import DAOIMPL.DaoImplNacionalidad;
 import entidad.Cliente;
@@ -102,11 +104,76 @@ public class PaginaController {
 	
 	private void cargarData() {
 		DaoImplNacionalidad daoImplNacionalidad = new DaoImplNacionalidad();
-		DaoImplCliente daoImplCliente = new DaoImplCliente();
+		ArrayList<Nacionalidad> aux = new ArrayList<Nacionalidad>();
 		Nacionalidad nacionalidad = new Nacionalidad("Argentina");
-		daoImplNacionalidad.Agregar(nacionalidad);
-		Cliente cliente = new Cliente(222, "Ramiro", "Alegre", "ralegre@asd.com", "asdsa 1 2 3", "General Pacheco", 21312231, new Date(), nacionalidad);
-		daoImplCliente.Agregar(cliente);
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Paraguay");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Bolivia");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Chile");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Uruguay");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Mexico");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Costa Rica");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Bahamas");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Estados Unidos");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Canada");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Inglaterria");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Rusia");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Suecia");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Australia");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Japon");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Nueva Zelanda");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Brasil");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Magadascar");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Polonia");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Ucrania");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("Armenia");
+		aux.add(nacionalidad);
+
+		nacionalidad = new Nacionalidad("España");
+		aux.add(nacionalidad);
+		
+		for (Nacionalidad n : aux) {
+			daoImplNacionalidad.Agregar(n);
+		}
 	}
 
 }

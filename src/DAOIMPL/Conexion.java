@@ -1,5 +1,8 @@
 package DAOIMPL;
 
+import java.util.List;
+
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -11,11 +14,12 @@ import org.springframework.stereotype.Repository;
 public class Conexion {
 	private SessionFactory sessionFactory;
 	private Session session;
+	ServiceRegistry serviceRegistry;
+	Configuration configuration;
 
 	public Conexion() {
-		Configuration configuration = new Configuration().configure();
-		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+		configuration = new Configuration().configure();
+		serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
 	}
 
 	public Session getSession() {
@@ -27,38 +31,50 @@ public class Conexion {
 	}
 
 	public void abrirConexion()	{
+		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 		session=sessionFactory.openSession();
 	}
 
 	public void cerrarSession()	{
 		session.close();
+		sessionFactory.close();
 	}	
 
-	public void closeSessionFactory()	{
+	public void cerrarSessionFactory()	{
 		sessionFactory.close();
 	}
 
-	public void SaveObject(Object object) {
+	public void GuardarObjeto(Object object) throws HibernateException {
 		session.save(object);
 	}
 
-	public Object ObtainObject(Class<?> clase,int id) {
+	public Object ObtenerObjeto(Class<?> clase,int id) {
 		return session.get(clase, id);
 	}
 
-	public void UpdateObject(Object object) {
+	public List<Object[]> ObtenerListaPorQuery(String query){
+	 	   List<Object[]> list = (List<Object[]>)session.createSQLQuery(query).list();
+	 	   return list;
+	}
+	
+	public Object obtenerDatoUnicoPorQuery(String query) {
+		Object object = (Object)session.createSQLQuery(query).uniqueResult();
+		return object;
+	}
+	
+	public void ActualizarObjeto(Object object) {
 		session.update(object);
 	}
 
-	public void EraseObject(Object object) {
+	public void BorrarObjeto(Object object) {
 		session.delete(object);
 	}
 
-	public void InitTransaction() {
+	public void IniciarTransaccion() {
 		session.beginTransaction();
 	}
 
-	public void RollbackTransaccion() {
+	public void RollbackearTransaccion() {
 		session.getTransaction().rollback();
 	}
 
@@ -66,7 +82,7 @@ public class Conexion {
 		session.getTransaction().commit();
 	}
 
-	public boolean isTransactionActive(){
+	public boolean isTranssacionActiva(){
 		if (session.getTransaction() != null) {
 			return session.getTransaction().isActive();
 		}
@@ -74,7 +90,8 @@ public class Conexion {
 		return false;
 	}
 
-	public boolean isConectionOpen() {
+
+	public boolean isConexionActiva() {
 		if(session != null)
 			return session.isOpen();
 

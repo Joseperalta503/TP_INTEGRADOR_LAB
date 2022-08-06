@@ -18,20 +18,22 @@ public class Nacionalidad implements Serializable {
 	@Id
 	@Column(name="ID_Nacionalidad")
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
-	private Integer ID;
+	private int ID;
+	
 	@Column(name="Descripcion")
 	private String Descripcion;
+	
 	public Nacionalidad() {}
 	
 	public Nacionalidad(String Descripcion) {
 		this.Descripcion = Descripcion;
 	}
 
-	public Integer getID() {
+	public int getID() {
 		return ID;
 	}
 
-	public void setID(Integer iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 
@@ -40,11 +42,6 @@ public class Nacionalidad implements Serializable {
 	}
 
 	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
-	}
-
-	@Override
-	public String toString() {
-		return "Nacionalidad [ID=" + ID + ", Descripcion=" + Descripcion + "]";
+		this.Descripcion = descripcion;
 	}
 }

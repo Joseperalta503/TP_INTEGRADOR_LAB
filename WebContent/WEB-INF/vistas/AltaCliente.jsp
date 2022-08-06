@@ -36,7 +36,15 @@
 
                 <label for="NACIONALIDAD"> NACIONALIDAD </label>
                 <input id="NACIONALIDAD" type="text" name="nacionalidad">
-
+				<label for="nacionalidad" class="col-md-3 offset-4 col-form-label">NACIONALIDAD </label>
+	               <select required name="nacionalidad">                    			
+		              <option value="">--</option>
+		                  <c:forEach var="obj" items="${nacionalidades}">
+			                 <option value="${obj.getIdNacionalidad()}">${obj.getDescripcion()}</option>
+			                  console.log(${obj.getIdNacionalidad()})													
+							</c:forEach>
+					</select>
+				
                 <label for="EMAIL"> EMAIL </label>
                 <input id="EMAIL" type="email" name="email">
 

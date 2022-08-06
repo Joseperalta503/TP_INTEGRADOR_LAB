@@ -17,6 +17,8 @@ import entidad.Cliente;
 import entidad.Nacionalidad;
 import entidad.Usuario;
 import utils.ConfigHibernate;
+import DAO.DaoNacionalidad;
+import DAOIMPL.DaoImplNacionalidad;
 
 
 @Controller
@@ -41,22 +43,23 @@ public class ClientesController {
 	}
 	
 	@RequestMapping("AgregarCliente.html")
-	public ModelAndView agregar_Cliente(String dni, String nombre, String Apellido, 
-			Nacionalidad nacionalidad, String email,String direccion, String localidad, String telefono, Date fechanacimiento) {
+	public ModelAndView agregar_Cliente(String dni, String nombre, String apellido, 
+			String nacionalidad, String email,String direccion, String localidad, String telefono, Date fechanacimiento) {
 		
-		ServiceClienteImpl Clientes = new ServiceClienteImpl();
-		Cliente cliente = new Cliente();
-		cliente.setApellido(Apellido);
-		cliente.setDireccion(direccion);
-		cliente.setDni(Integer.parseInt(dni));
-		cliente.setEmail(email);
-		cliente.setFechaNacimiento(fechanacimiento);
-		cliente.setLocalidad(localidad);
-		cliente.setNombre(nombre);
-		cliente.setTelefono(Integer.parseInt(telefono));
-		cliente.setNacionalidad(nacionalidad);
-		
-		Clientes.Agregar(cliente);
+//		ServiceClienteImpl Clientes = new ServiceClienteImpl();
+//		
+//		Cliente cliente = new Cliente();
+//		cliente.setApellido(apellido);
+//		cliente.setDireccion(direccion);
+//		cliente.setDni(Integer.parseInt(dni));
+//		cliente.setEmail(email);
+//		cliente.setFechaNacimiento(fechanacimiento);
+//		cliente.setLocalidad(localidad);
+//		cliente.setNombre(nombre);
+//		cliente.setTelefono(Integer.parseInt(telefono));
+//		cliente.setNacionalidad(nacionalidad);
+//		
+//		Clientes.Agregar(cliente);
 		
 //		if(estado) {
 //			System.out.println("NASHEEEE");
